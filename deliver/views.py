@@ -3,6 +3,11 @@ from django.views import View
 from .models import MenuItem, Category, OrderModel
 
 
+class Index(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'index.html')
+
+
 class Order(View):
     def get(self, request, *args, **kwargs):
         # get every item from each category
