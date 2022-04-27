@@ -32,26 +32,64 @@
       <section>
         <div class="row">
           <div class="col-md-6 gx-5 mb-4">
-            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-              <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
-              <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </a>
+            <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-mdb-target="#carouselExampleIndicators"
+                  data-mdb-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-mdb-target="#carouselExampleIndicators"
+                  data-mdb-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-mdb-target="#carouselExampleIndicators"
+                  data-mdb-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1651092199/slid_roast_duck_banner_aujtlu.jpg" class="d-block w-100" alt="Slice Roast Duck"/>
+                </div>
+                <div class="carousel-item">
+                  <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1651092199/roast_duck_banner_icau42.jpg" class="d-block w-100" alt="Roast Duck Plating"/>
+                </div>
+                <div class="carousel-item">
+                  <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1651092860/roast_duck_ready_x7w4rr.jpg" class="d-block w-100" alt="Roast Duck Ready to Eat"/>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
           </div>
 
           <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>Facilis consequatur eligendi</strong></h4>
+            <h4><strong>Who are we?</strong></h4>
             <p class="text-muted">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
-              eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
-              sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+              Welcome to Faddy Duck Restaurant. We are a Beijing style deli. At Faddy Duck we are 
+              passionate about bringing the authentic flavours of Peking(Beijing) to Dublin, especially 
+              Peking Roasted Duck(北京烤鸭).  
             </p>
-            <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
+            <p><strong>What is Peking Roasted Duck?</strong></p>
             <p class="text-muted">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
-              nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
-              alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+              Peking roasted duck was a staple of imperial menus in China 
+              before the Ming Dynasty, and is today considered one of China's National dishes. The duck 
+              is glazed with a thick layer of syrup and hung to dry. Then roasted either in a closed 
+              oven or a hung oven.
             </p>
           </div>
         </div>
