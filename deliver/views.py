@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import MenuItem, Category, OrderModel
+from .models import MenuItem, Category, Checkout
 
 
 class Index(View):
@@ -8,7 +8,8 @@ class Index(View):
         return render(request, 'index.html')
 
 
-class Order(View):
+class Menu(View):
+    # get method start
     def get(self, request, *args, **kwargs):
         # get every item from each category
         meals = MenuItem.objects.filter(
@@ -24,15 +25,20 @@ class Order(View):
         }
 
         # render the template
-        return render(request, 'customer/order.html', context)
+        return render(request, 'menu.html', context)
+    # get method end
 
+
+    # post method start
     def post(self, request, *args, **kwargs):
+        # create a dictionary for items
         order_items = {
             'items': []
         }
-
+        # grab items and make a list
         items = request.POST.getlist('items[]')
 
+        # loop through these items
         for item in items:
             menu_item = MenuItem.objects.get(pk__contains=int(item))
             item_data = {
@@ -45,12 +51,13 @@ class Order(View):
 
             price = 0
             item_ids = []
-
+        # loop through items which customer like to order
         for item in order_items['items']:
             price += item['price']
             item_ids.append(item['id'])
 
-        order = OrderModel.objects.create(price=price)
+        # finally add items to order
+        order = Checkout.objects.create(price=price)
         order.items.add(*item_ids)
 
         context = {
@@ -58,4 +65,5 @@ class Order(View):
             'price': price
         }
 
-        return render(request, 'customer/order_confirmation.html', context)
+        return render(request, 'checkout.html', context)
+    # post method end

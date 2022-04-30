@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from deliver.views import Index
+from deliver.views import Index, Menu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index.as_view(), name='index'),
+    path('menu/', Menu.as_view(), name='menu'),
 ]

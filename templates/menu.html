@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div
+class="p-5 text-center bg-image"
+style="
+  background-image: url('#');
+  height: 400px;
+  margin-top: 58px;
+"
+>
+<div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <div class="text-white">
+      <h1 class="mb-3">Thank you for your order!</h1>
+      <h4 class="mb-3">You should receive a confirmation email soon.</h4>
+      <a class="btn btn-outline-light btn-lg" href="{% url 'index' %}" role="button"
+      >Go to the homepage</a
+      >
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-12 mb-4">
+                    <!--Section: Content-->
+                    <section>
+                    <!-- Post -->
+                    {% for app in meals %}
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                            <img src="{{ meals.image.url }}" class="img-fluid" />
+                            <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        </div>
+
+                        <div class="col-md-8 mb-4">
+                        <h5>{{ app.name }}</h5>
+                        <p>{{ app.description }}</p>
+                        
+                        <input type="checkbox" 
+                            name="items[]" 
+                            class="btn-check" 
+                            id="btn-check" 
+                            value="{{ app.pk }}"
+                            autocomplete="off" />
+                        <label class="btn btn-primary" for="btn-check">Order</label>
+                        </div>
+                    {% endfor %}
+                    </div>
+
+                    <!-- Post -->
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                            <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" />
+                            <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        </div>
+
+                        <div class="col-md-8 mb-4">
+                        <h5>Very long post title</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
+                            necessitatibus itaque error alias repellendus nemo reiciendis aperiam quisquam
+                            minus ipsam reprehenderit commodi ducimus, in dicta aliquam eveniet dignissimos
+                            magni.
+                        </p>
+
+                        <button type="button" class="btn btn-primary">Read</button>
+                        </div>
+                    </div>
+
+                    <!-- Post -->
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                            <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                            <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        </div>
+
+                        <div class="col-md-8 mb-4">
+                        <h5>Very long post title</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
+                            necessitatibus itaque error alias repellendus nemo reiciendis aperiam quisquam
+                            minus ipsam reprehenderit commodi ducimus, in dicta aliquam eveniet dignissimos
+                            magni.
+                        </p>
+
+                        <button type="button" class="btn btn-primary">Read</button>
+                        </div>
+                    </div>
+
+                    <!-- Post -->
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                            <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
+                            <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        </div>
+
+                        <div class="col-md-8 mb-4">
+                        <h5>Very long post title</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
+                            necessitatibus itaque error alias repellendus nemo reiciendis aperiam quisquam
+                            minus ipsam reprehenderit commodi ducimus, in dicta aliquam eveniet dignissimos
+                            magni.
+                        </p>
+
+                        <button type="button" class="btn btn-primary">Read</button>
+                        </div>
+                    </div>
+                    </section>
+                    <!--Section: Content-->
+                </div>
+            </div>
+        </form>
+
+        <!-- Pagination -->
+        <nav class="my-4" aria-label="...">
+            <ul class="pagination pagination-circle justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+            </ul>
+        </nav>
+
+        <!-- checkout -->
+        <div id="intro" class="text-center">
+            <a class="btn btn-primary m-2" href="#" target="_blank"
+            role="button">Check Out</a>
+        </div>
+    </div>
+</main>
+{% endblock content %}
