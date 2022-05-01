@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<div
-class="p-5 text-center bg-image"
-style="
-  background-image: url('#');
-  height: 400px;
-  margin-top: 58px;
-"
->
-<div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-  <div class="d-flex justify-content-center align-items-center h-100">
-    <div class="text-white">
-      <h1 class="mb-3">Thank you for your order!</h1>
-      <h4 class="mb-3">You should receive a confirmation email soon.</h4>
-      <a class="btn btn-outline-light btn-lg" href="{% url 'index' %}" role="button"
-      >Go to the homepage</a
-      >
+<header>
+    <!-- Background image -->
+    <div
+      class="p-5 text-center bg-image"
+      style="
+        background-image: url('#');
+        height: 600px;
+        margin-top: 58px;
+      "
+    >
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white">
+            <h1 class="mb-3">Love what you eat</h1>
+            <h4 class="mb-3">Check on our menu</h4>
+            <a class="btn btn-outline-light btn-lg" href="{% url 'menu' %}" role="button"
+            >Order Now</a
+            >
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
-
+    <!-- Background image -->
+</header>
 
 <!--Main layout-->
 <main class="my-5">
@@ -35,103 +37,86 @@ style="
                 <div class="col-md-12 mb-4">
                     <!--Section: Content-->
                     <section>
-                    <!-- Post -->
-                    {% for app in meals %}
+                    <!-- meals  -->
                     <div class="row">
+                        {% for meal in meals %}
                         <div class="col-md-4 mb-4">
-                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                            <img src="{{ meals.image.url }}" class="img-fluid" />
-                            <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
+                            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                <img src="{{ meal.image.url }}" class="img-fluid" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="col-md-8 mb-4">
-                        <h5>{{ app.name }}</h5>
-                        <p>{{ app.description }}</p>
-                        
-                        <input type="checkbox" 
-                            name="items[]" 
-                            class="btn-check" 
-                            id="btn-check" 
-                            value="{{ app.pk }}"
-                            autocomplete="off" />
-                        <label class="btn btn-primary" for="btn-check">Order</label>
+                            <h5>{{ meal.name }}</h5>
+                            <p>{{ meal.description }}</p>
+                            <p>{{ meal.price }}</p>
+                            
+                            <input type="checkbox" 
+                                name="items[]" 
+                                class="btn-check" 
+                                id="btn-check" 
+                                value="{{ meal.pk }}"
+                                autocomplete="off" />
+                            <label class="btn btn-primary" for="btn-check">Order</label>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
                     </div>
 
-                    <!-- Post -->
+                    <!-- desserts -->
                     <div class="row">
+                        {% for dessert in desserts %}
                         <div class="col-md-4 mb-4">
-                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" />
-                            <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
+                            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                <img src="{{ dessert.image.url }}" class="img-fluid"/>
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="col-md-8 mb-4">
-                        <h5>Very long post title</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
-                            necessitatibus itaque error alias repellendus nemo reiciendis aperiam quisquam
-                            minus ipsam reprehenderit commodi ducimus, in dicta aliquam eveniet dignissimos
-                            magni.
-                        </p>
-
-                        <button type="button" class="btn btn-primary">Read</button>
+                            <h5>{{ dessert.name }}</h5>
+                            <p>{{ dessert.description }}</p>
+                            <p>{{ dessert.price }}</p>
+                            <input type="checkbox" 
+                                name="items[]" 
+                                class="btn-check" 
+                                id="btn-check" 
+                                value="{{ dessert.pk }}"
+                                autocomplete="off" />
+                            <label class="btn btn-primary" for="btn-check">Order</label>
                         </div>
+                        {% endfor %}
                     </div>
 
-                    <!-- Post -->
+                    <!-- drinks -->
                     <div class="row">
+                        {% for drink in drinks %}
                         <div class="col-md-4 mb-4">
-                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
-                            <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
+                            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                <img src="{{ drink.image.url }}" class="img-fluid" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="col-md-8 mb-4">
-                        <h5>Very long post title</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
-                            necessitatibus itaque error alias repellendus nemo reiciendis aperiam quisquam
-                            minus ipsam reprehenderit commodi ducimus, in dicta aliquam eveniet dignissimos
-                            magni.
-                        </p>
-
-                        <button type="button" class="btn btn-primary">Read</button>
+                            <h5>{{ drink.name }}</h5>
+                            <p>{{ drink.description }}</p>
+                            <p>{{ drink.price }}</p>
+                            <input type="checkbox" 
+                                name="items[]" 
+                                class="btn-check" 
+                                id="btn-check" 
+                                value="{{ drink.pk }}"
+                                autocomplete="off" />
+                            <label class="btn btn-primary" for="btn-check">Order</label>
                         </div>
-                    </div>
-
-                    <!-- Post -->
-                    <div class="row">
-                        <div class="col-md-4 mb-4">
-                        <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
-                            <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        </div>
-
-                        <div class="col-md-8 mb-4">
-                        <h5>Very long post title</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione
-                            necessitatibus itaque error alias repellendus nemo reiciendis aperiam quisquam
-                            minus ipsam reprehenderit commodi ducimus, in dicta aliquam eveniet dignissimos
-                            magni.
-                        </p>
-
-                        <button type="button" class="btn btn-primary">Read</button>
-                        </div>
+                        {% endfor %}
                     </div>
                     </section>
                     <!--Section: Content-->
