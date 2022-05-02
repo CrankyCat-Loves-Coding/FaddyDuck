@@ -7,16 +7,16 @@
       class="p-5 text-center bg-image"
       style="
         background-image: url('#');
-        height: 600px;
+        height: 300px;
         margin-top: 58px;
       "
     >
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
         <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="text-white">
-            <h1 class="mb-3">Love what you eat</h1>
+          <div class="text-dark">
+            <h1 class="mb-3">Thank you for your order!</h1>
             <h4 class="mb-3">Check on our menu</h4>
-            <a class="btn btn-outline-light btn-lg" href="{% url 'menu' %}" role="button"
+            <a class="btn btn-outline-dark btn-lg" href="{% url 'menu' %}" role="button"
             >Order Now</a
             >
           </div>
@@ -37,87 +37,168 @@
                 <div class="col-md-12 mb-4">
                     <!--Section: Content-->
                     <section>
-                    <!-- meals  -->
-                    <div class="row">
-                        {% for meal in meals %}
-                        <div class="col-md-4 mb-4">
-                            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                                <img src="{{ meal.image.url }}" class="img-fluid" />
-                                <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                </a>
+                        <!-- meals  -->
+                        <div id="meals" class="row d-flex align-items-center justify-content-center">
+                            <div class="col-md-12 mb-4 my-5">
+                                <div class="py-4 text-center">
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                    href="#meals" rel="nofollow">
+                                    Check on Meals menu
+                                    </a>
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                        href="#desserts" rel="nofollow">
+                                        Check on Desserts menu
+                                    </a>
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                        href="#drinks" rel="nofollow">
+                                        Check on Drinks menu
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-8 mb-4">
-                            <h5>{{ meal.name }}</h5>
-                            <p>{{ meal.description }}</p>
-                            <p>{{ meal.price }}</p>
-                            
-                            <input type="checkbox" 
+                            {% for meal in meals %}
+                            <div class="col-md-4 mb-4 my-5">
+                                <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                    <img src="{{ meal.image.url }}" class="img-fluid"/>
+                                    <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </a>
+                                </div>
+                            </div>
+                    
+                            <div class="col-md-6 mb-4 my-5">
+                                <h5>{{ meal.name }}</h5>
+                                <p>{{ meal.description }}</p>
+                            </div>
+
+                            <div class="col-md-1 mb-4 my-5 text-center">
+                                <p>{{ meal.price }}</p>
+                            </div>
+
+                            <div class="col-md-1 mb-4 my-5">
+                                <input type="checkbox" 
                                 name="items[]" 
                                 class="btn-check" 
                                 id="btn-check" 
                                 value="{{ meal.pk }}"
                                 autocomplete="off" />
-                            <label class="btn btn-primary" for="btn-check">Order</label>
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                    <!-- desserts -->
-                    <div class="row">
-                        {% for dessert in desserts %}
-                        <div class="col-md-4 mb-4">
-                            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                                <img src="{{ dessert.image.url }}" class="img-fluid"/>
-                                <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                </a>
+                                <label class="btn btn-dark btn-block mb-4" 
+                                    style="background-color: #4f4f4f;"
+                                    for="btn-check">
+                                    Order
+                                </label>
                             </div>
+
+                            {% endfor %}
                         </div>
 
-                        <div class="col-md-8 mb-4">
-                            <h5>{{ dessert.name }}</h5>
-                            <p>{{ dessert.description }}</p>
-                            <p>{{ dessert.price }}</p>
-                            <input type="checkbox" 
+                        <!-- desserts -->
+                        <div id="desserts" class="row d-flex align-items-center justify-content-center">
+                            <div class="col-md-12 mb-4 my-5">
+                                <div class="py-4 text-center">
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                    href="#meals" rel="nofollow">
+                                    Check on Meals menu
+                                    </a>
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                        href="#desserts" rel="nofollow">
+                                        Check on Desserts menu
+                                    </a>
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                        href="#drinks" rel="nofollow">
+                                        Check on Drinks menu
+                                    </a>
+                                </div>
+                            </div>
+
+                            {% for dessert in desserts %}
+                            <div class="col-md-4 mb-4 my-5">
+                                <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                    <img src="{{ dessert.image.url }}" class="img-fluid"/>
+                                    <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4 my-5">
+                                <h5>{{ dessert.name }}</h5>
+                                <p>{{ dessert.description }}</p>
+                            </div>
+
+                            <div class="col-md-1 mb-4 my-5 text-center">
+                                <p>{{ dessert.price }}</p>
+                            </div>
+
+                            <div class="col-md-1 mb-4 my-5">
+                                <input type="checkbox" 
                                 name="items[]" 
                                 class="btn-check" 
                                 id="btn-check" 
                                 value="{{ dessert.pk }}"
                                 autocomplete="off" />
-                            <label class="btn btn-primary" for="btn-check">Order</label>
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                    <!-- drinks -->
-                    <div class="row">
-                        {% for drink in drinks %}
-                        <div class="col-md-4 mb-4">
-                            <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                                <img src="{{ drink.image.url }}" class="img-fluid" />
-                                <a href="#!">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                </a>
+                                <label class="btn btn-dark btn-block mb-4" 
+                                    style="background-color: #4f4f4f;"
+                                    for="btn-check">
+                                    Order
+                                </label>
                             </div>
+                            {% endfor %}
                         </div>
 
-                        <div class="col-md-8 mb-4">
-                            <h5>{{ drink.name }}</h5>
-                            <p>{{ drink.description }}</p>
-                            <p>{{ drink.price }}</p>
-                            <input type="checkbox" 
+                        <!-- drinks -->
+                        <div id="drinks"  class="row d-flex align-items-center justify-content-center">
+                            <div class="col-md-12 mb-4 my-5">
+                                <div class="py-4 text-center">
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                    href="#meals" rel="nofollow">
+                                    Check on Meals menu
+                                    </a>
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                        href="#desserts" rel="nofollow">
+                                        Check on Desserts menu
+                                    </a>
+                                    <a role="button" class="btn btn-success btn-lg m-2"
+                                        href="#drinks" rel="nofollow">
+                                        Check on Drinks menu
+                                    </a>
+                                </div>
+                            </div>
+
+                            {% for drink in drinks %}
+                            <div class="col-md-4 mb-4 my-5">
+                                <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                    <img src="{{ drink.image.url }}" class="img-fluid"/>
+                                    <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4 my-5">
+                                <h5>{{ drink.name }}</h5>
+                                <p>{{ drink.description }}</p>
+                            </div>
+
+                            <div class="col-md-1 mb-4 my-5 text-center">
+                                <p>{{ drink.price }}</p>
+                            </div>
+
+                            <div class="col-md-1 mb-4 my-5">
+                                <input type="checkbox" 
                                 name="items[]" 
                                 class="btn-check" 
                                 id="btn-check" 
                                 value="{{ drink.pk }}"
                                 autocomplete="off" />
-                            <label class="btn btn-primary" for="btn-check">Order</label>
+                                <label class="btn btn-dark btn-block mb-4" 
+                                    style="background-color: #4f4f4f;"
+                                    for="btn-check">
+                                    Order
+                                </label>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
                     </section>
                     <!--Section: Content-->
                 </div>
