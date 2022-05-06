@@ -42,8 +42,8 @@
                             <div class="col-md-12 mb-4 my-5">
                                 <div class="py-4 text-center">
                                     <a role="button" class="btn btn-success btn-lg m-2"
-                                    href="#meals" rel="nofollow">
-                                    Check on Meals menu
+                                        href="#meals" rel="nofollow">
+                                        Check on Meals menu
                                     </a>
                                     <a role="button" class="btn btn-success btn-lg m-2"
                                         href="#desserts" rel="nofollow">
@@ -53,44 +53,36 @@
                                         href="#drinks" rel="nofollow">
                                         Check on Drinks menu
                                     </a>
+                                    <button class="btn btn-info btn-lg m-2">Place Order</button>
                                 </div>
                             </div>
 
                             {% for meal in meals %}
-                            <div class="col-md-4 mb-4 my-5">
-                                <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
-                                    <img src="{{ meal.image.url }}" class="img-fluid"/>
-                                    <a href="#!">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </a>
+                            <div class="row">
+                                <div class="col-md-4 mb-4 my-5">
+                                    <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                                        <img src="{{ meal.image.url }}" class="img-fluid"/>
+                                        <a href="#!">
+                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                    
-                            <div class="col-md-6 mb-4 my-5">
-                                <h5>{{ meal.name }}</h5>
-                                <p>{{ meal.description }}</p>
-                            </div>
-
-                            <div class="col-md-1 mb-4 my-5 text-center">
-                                <p>{{ meal.price }}</p>
-                            </div>
-
-                            <div class="col-md-1 mb-4 my-5">
-                                <input type="checkbox" 
-                                name="items[]" 
-                                class="btn-check" 
-                                id="btn-check" 
-                                value="{{ meal.pk }}"
-                                autocomplete="off" />
-                                <label class="btn btn-dark btn-block mb-4" 
-                                    style="background-color: #4f4f4f;"
-                                    for="btn-check">
-                                    Order
-                                </label>
+                        
+                                <div class="col-md-8 mb-4 my-5">
+                                    <h4>{{ meal.name }}</h4>
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" name="items[]" class="form-check-input btn btn-success btn-lg" value="{{ meal.pk }}">
+                                        <label><h5>{{ meal.price }}</h5></label>
+                                    </div>
+                                    <p class=""></p>
+                                    <p class="col-md-12 mb-4">{{ meal.description }}</p>
+                                </div>
                             </div>
 
                             {% endfor %}
                         </div>
+
+                        <hr class="my-5" />
 
                         <!-- desserts -->
                         <div id="desserts" class="row d-flex align-items-center justify-content-center">
@@ -108,6 +100,7 @@
                                         href="#drinks" rel="nofollow">
                                         Check on Drinks menu
                                     </a>
+                                    <button class="btn btn-info btn-lg m-2">Place Order</button>
                                 </div>
                             </div>
 
@@ -123,26 +116,16 @@
 
                             <div class="col-md-6 mb-4 my-5">
                                 <h5>{{ dessert.name }}</h5>
-                                <p>{{ dessert.description }}</p>
-                            </div>
-
-                            <div class="col-md-1 mb-4 my-5 text-center">
                                 <p>{{ dessert.price }}</p>
+                                <p>{{ dessert.description }}</p>
+                                <div class="col-md-1 mb-4 my-5">
+                                    <input type="checkbox" name="items[]" class="btn-check form-check-input" value="{{ dessert.pk }}"/>
+                                    <label class="btn btn-dark btn-block mb-4 form-check-label" style="background-color: #4f4f4f;" for="btn-check">
+                                        Order
+                                    </label>
+                                </div>    
                             </div>
 
-                            <div class="col-md-1 mb-4 my-5">
-                                <input type="checkbox" 
-                                name="items[]" 
-                                class="btn-check" 
-                                id="btn-check" 
-                                value="{{ dessert.pk }}"
-                                autocomplete="off" />
-                                <label class="btn btn-dark btn-block mb-4" 
-                                    style="background-color: #4f4f4f;"
-                                    for="btn-check">
-                                    Order
-                                </label>
-                            </div>
                             {% endfor %}
                         </div>
 
@@ -162,6 +145,7 @@
                                         href="#drinks" rel="nofollow">
                                         Check on Drinks menu
                                     </a>
+                                    <button class="btn btn-info btn-lg m-2">Place Order</button>
                                 </div>
                             </div>
 
@@ -176,29 +160,46 @@
                             </div>
 
                             <div class="col-md-6 mb-4 my-5">
-                                <h5>{{ drink.name }}</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" name="items[]" class="form-check-input" value="{{ drink.pk }}">
+                                        <label class="form-check-label">{{ drink.name }}</label>
+                                    </div>
+                                    <div class="col-md-6 mb-4 my-5">
+                                        <p class="font-weight-bold pl-5 ">{{ drink.price }}</p>
+                                    </div>
+                                    
+                                </div>
                                 <p>{{ drink.description }}</p>
                             </div>
+                            <!-- <div class="col-md-6 mb-4 my-5"> 
+                                <div class="col-md-1 mb-4 my-5">
+                                    <input type="checkbox" 
+                                        name="items[]" 
+                                        class="btn-check form-check-input" 
+                                        id="btn-check" 
+                                        value="{{ drink.pk }}"
+                                        autocomplete="off" />
+                                    <label class="btn btn-dark btn-block mb-4" 
+                                        style="background-color: #4f4f4f;"
+                                        for="btn-check">
+                                        Order
+                                    </label>
+                                </div>
 
-                            <div class="col-md-1 mb-4 my-5 text-center">
-                                <p>{{ drink.price }}</p>
-                            </div>
+                                <h5>{{ drink.name }}</h5>
 
-                            <div class="col-md-1 mb-4 my-5">
-                                <input type="checkbox" 
-                                name="items[]" 
-                                class="btn-check" 
-                                id="btn-check" 
-                                value="{{ drink.pk }}"
-                                autocomplete="off" />
-                                <label class="btn btn-dark btn-block mb-4" 
-                                    style="background-color: #4f4f4f;"
-                                    for="btn-check">
-                                    Order
-                                </label>
-                            </div>
+                                <div class="col-md-1 mb-4 my-5 text-center">
+                                    <p>{{ drink.price }}</p>
+                                </div>
+
+                                <p>{{ drink.description }}</p>
+
+                            </div> -->
+
                             {% endfor %}
                         </div>
+
                     </section>
                     <!--Section: Content-->
                 </div>
@@ -222,11 +223,6 @@
             </ul>
         </nav>
 
-        <!-- checkout -->
-        <div id="intro" class="text-center">
-            <a class="btn btn-primary m-2" href="#" target="_blank"
-            role="button">Check Out</a>
-        </div>
     </div>
 </main>
 {% endblock content %}

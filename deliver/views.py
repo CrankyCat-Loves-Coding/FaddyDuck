@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import MenuItem, Category, Checkout
+from .models import MenuItem, Checkout
 
 
 class Index(View):
@@ -40,7 +40,7 @@ class Menu(View):
 
         # loop through these items
         for item in items:
-            menu_item = MenuItem.objects.get(pk__contains=int(item))
+            menu_item = MenuItem.objects.get(pk=int(item))
             item_data = {
                 'id': menu_item.pk,
                 'name': menu_item.name,
@@ -56,14 +56,15 @@ class Menu(View):
             price += item['price']
             item_ids.append(item['id'])
 
-        # finally add items to order
-        order = Checkout.objects.create(price=price)
-        order.items.add(*item_ids)
+            # finally add items to order
+            order = Checkout.objects.create(price=price)
+            order.items.add(*item_ids)
 
-        context = {
-            'items': order_items['items'],
-            'price': price
-        }
+            context = {
+                'items': order_items['items'],
+                'price': price
+            }
 
-        return render(request, 'checkout.html', context)
-    # post method end
+            return render(request, 'cart.html', context)
+        # post method end
+    
